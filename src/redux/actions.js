@@ -1,20 +1,13 @@
 export function decreaseAge() {
   return {
     type: "DECREASE",
-    index: 0,
+    index: 34, //some random
   };
 }
 
-export function setName(name) {
+export function increaseAge() {
   return {
-    type: "SETNAME",
-    name,
-  };
-}
-
-export function setAge(age) {
-  return {
-    type: "SETAGE",
-    age,
+    type: "INCREASE",
+    index: 34, //some random
   };
 }

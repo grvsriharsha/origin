@@ -2,26 +2,21 @@ import React from "react";
 import { Route, Router } from "react-router-dom";
 import { withRouter } from "react-router";
 import { connect } from "react-redux";
-import { setAge, setName } from "../redux/actions";
+import { increaseAge, decreaseAge } from "../redux/actions";
 
 class Details extends React.Component {
   constructor(props) {
     super(props);
-    // this.state = { name: "", age: 0 };
-
-    this.handleChangeName = this.handleChangeName.bind(this);
-    this.handleChangeAge = this.handleChangeAge.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.increaseAge = this.increaseAge.bind(this);
+    this.decreaseAge = this.decreaseAge.bind(this);
   }
 
-  handleChangeName(event) {
-    this.props.dispatch(setName());
-    // this.setState({ name: event.target.value });
+  increaseAge() {
+    this.props.dispatch(increaseAge());
   }
 
-  handleChangeAge(event) {
-    this.props.dispatch(setAge());
-    //this.setState({ age: event.target.value });
+  decreaseAge() {
+    this.props.dispatch(decreaseAge());
   }
 
   handleSubmit(event) {
@@ -30,31 +25,19 @@ class Details extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          Name:
-          <input
-            type="text"
-            name={this.props.name}
-            onChange={this.handleChangeName}
-          />
-        </label>
-        <label>
-          Age:
-          <input
-            type="text"
-            name={this.props.age}
-            onChange={this.handleChangeAge}
-          />
-        </label>
-        <input type="submit" name="Submit" />
-      </form>
+      <div>
+        <h3>click here to increaseAge</h3>
+        <button onClick={this.increaseAge}>+1</button>
+        <h3>click here to DecreaseAge</h3>
+        <button onClick={this.decreaseAge}>-1</button>
+        <h1>Current age is: {this.props.statObject.age} </h1>
+      </div>
     );
   }
 }
 
 function mapStateToProps(state) {
-  return { state: state };
+  return { statObject: state };
 }
 
 export default withRouter(connect(mapStateToProps)(Details));

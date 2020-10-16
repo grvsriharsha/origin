@@ -1,24 +1,17 @@
-import firstdata from "../data/firstdata";
 // const clone = require('lodash/clone');
 // const cloneDeep = require('lodash/clonedeep');
 import _ from "lodash";
-const reducer = function manageDetails(
-  state = { name: "ABC", age: 10 },
-  action
-) {
+const reducer = function manageDetails(state = { age: 1 }, action) {
   switch (action.type) {
-    case "SETNAME": {
+    case "INCREASE": {
       var newState = _.cloneDeep(state);
-      newState.name = newState.name + "xxx";
-      console.log("in set age ", newState);
+      newState.age = newState.age + 1;
 
       return newState;
     }
-    case "SETAGE": {
+    case "DECREASE": {
       var newState = _.cloneDeep(state);
-      newState.age = newState.age + 100;
-      console.log("in set age ", newState);
-
+      newState.age = newState.age - 1;
       return newState;
     }
     default:
