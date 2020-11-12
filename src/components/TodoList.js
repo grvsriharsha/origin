@@ -3,6 +3,7 @@ import TodosContext from "../context";
 
 export default function TodoList() {
   const { state, dispatch } = useContext(TodosContext);
+  var todos = state.todos;
   return (
     <div>
       <ul>
